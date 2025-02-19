@@ -44,15 +44,15 @@ function App() {
       sx={{
         minHeight: '100vh',
         width: '100%',
-        // コーラル系ピンクのグラデーション背景
-        background: 'linear-gradient(to bottom, #fde2e4 0%, #ffcbd1 100%)',
+        background: '#F2F2F2',
       }}
     >
       {/* ヘッダー */}
       <AppBar
         position="static"
+        position="fixed"
         sx={{
-          backgroundColor: '#ffb6c1', // 淡いピンクで AppBar をカスタム
+          backgroundColor: '#FFE3E3',
           boxShadow: 'none',
         }}
       >
@@ -85,8 +85,59 @@ function App() {
           </Button>
         </Toolbar>
       </AppBar>
-
       {/* メインコンテンツ（中央にカードを配置） */}
+      <Box
+        component="main"
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: 'calc(100vh - 64px)', // AppBar 高さを差し引いて全画面っぽく
+          p: 2,
+        }}
+      >
+        <GlassCard>
+          <Typography
+            variant="h5"
+            sx={{ mb: 2, fontWeight: 'bold', color: '#444', letterSpacing: '0.05em' }}
+          >
+            単語カード
+          </Typography>
+          <Typography variant="body1" sx={{ mb: 4, color: '#555' }}>
+            ここに単語が表示されます
+          </Typography>
+
+          {/* チェック & バツボタン */}
+          <Box sx={{ display: 'flex', gap: 3 }}>
+            <IconButton
+              sx={{
+                backgroundColor: '#e0f7e9',
+                color: '#2e7d32',
+                boxShadow: '0 4px 8px rgba(0,0,0,0.15)',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  backgroundColor: '#c4efd7',
+                },
+              }}
+            >
+              <CheckIcon fontSize="large" />
+            </IconButton>
+            <IconButton
+              sx={{
+                backgroundColor: '#ffd6d6',
+                color: '#c62828',
+                boxShadow: '0 4px 8px rgba(0,0,0,0.15)',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  backgroundColor: '#ffc0c0',
+                },
+              }}
+            >
+              <CloseIcon fontSize="large" />
+            </IconButton>
+          </Box>
+        </GlassCard>
+      </Box>
       <Box
         component="main"
         sx={{
